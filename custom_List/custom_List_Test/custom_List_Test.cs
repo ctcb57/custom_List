@@ -7,6 +7,7 @@ namespace custom_List_Test
     [TestClass]
     public class custom_List_Test
     {
+        //All of the Add Method Tests
         [TestMethod]
         public void Add_AddToEmptyList_ItemGoesToIndexZero()
         {
@@ -55,7 +56,7 @@ namespace custom_List_Test
             // assert
             Assert.AreEqual(expected, actual);
         }
-
+        [TestMethod]
         public void Add_AddToFullList_AddsToEndOfList()
         {
             //arrange
@@ -74,20 +75,28 @@ namespace custom_List_Test
             //assert
             Assert.AreEqual(expected, actual);
         }
-
-        //create a test to see if it is doubled twice
-
+        [TestMethod]
         public void Add_AddToFullListSecondIteration_AddsToEndOfList()
         {
             //arrange
-            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
+            CustomList<int> testList = new CustomList<int>();
             int expected = 9;
             int actual;
             //act
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Add(5);
+            testList.Add(6);
+            testList.Add(7);
+            testList.Add(8);
             testList.Add(9);
-            actual = testList[9];
+            actual = testList[8];
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        //All of the remove method tests
     }
 }

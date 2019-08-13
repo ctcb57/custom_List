@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 namespace custom_List
 {
     //Steps for the project:
-    //Make sure all of the unit tests are created
-    //Create an indexer within the class
     //Generate the logic within the add method 
     //Logic Steps:
     //need to have item[0] = item that is passed as a parameter
@@ -21,11 +19,21 @@ namespace custom_List
     public class CustomList<T>
     {
         //member variables
-        private T[] customList;
-        private T count;
-        private T capacity;
-
-        public T Count
+        public T[] data;
+        private int count;
+        public int capacity;
+        public T this [int index]
+        {
+            get
+            {
+                return data[index];
+            }
+            set
+            {
+               data[index] = value;
+            }
+        }
+        public int Count
         {
             get
             {
@@ -33,14 +41,24 @@ namespace custom_List
             }
         }
 
-
         //constructor
-
-
+        public CustomList()
+        {
+            count = 0;
+            capacity = 4;
+            data = new T[capacity];
+        }
         //member methods
         public void Add(T itemToAdd)
         {
-
+            data[count] = itemToAdd;
+            count++;
+            if (count == capacity)
+            {
+                T[] newData = new T[capacity * 2];
+                data = newData;
+                capacity *= 2;
+            }
         }
     }
 }
