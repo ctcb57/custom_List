@@ -7,37 +7,64 @@ using System.Threading.Tasks;
 namespace custom_List
 {
     //Steps for the project:
-    //Generate the logic within the add method 
-    //Logic Steps:
-    //need to have item[0] = item that is passed as a parameter
-    //this needs to be a for loop though where it is item[i] and predicated on the capacity of the array
-    //when the capacity has been reached, there needs to be logic which will double the size of the array
-    //for this, it will reinstantiate an array which is the same size as the previous array size
-    //need to combine these two arrays while also keeping the numbers at the correct index locations
-    //Test the logic when it is complete to ensure the method works
-    //move onto the remove method
+    //Make capacity a property
+    //Need to start with the test method creation for the remove method
+    //after approval, start to develop the method for the remove method
+    //before this, generate the steps necessary to create this method
+
     public class CustomList<T>
     {
         //member variables
         public T[] data;
         private int count;
-        public int capacity;
+        private int capacity;
         public T this [int index]
         {
             get
             {
-                return data[index];
+                if (index < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else if (index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    return data[index];
+                }
             }
             set
             {
-               data[index] = value;
+                if (index < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else if (index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    data[index] = value;
+                }
             }
         }
+        //throw the outofrange exceptions within the indexer
         public int Count
         {
             get
             {
                 return count;
+            }
+        }
+
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
             }
         }
 
@@ -49,16 +76,33 @@ namespace custom_List
             data = new T[capacity];
         }
         //member methods
+
+
         public void Add(T itemToAdd)
         {
-            data[count] = itemToAdd;
-            count++;
             if (count == capacity)
             {
                 T[] newData = new T[capacity * 2];
-                data = newData;
+                for (int i = 0; i < count; i++)
+                {
+                    newData[i] = data[i];
+                }
                 capacity *= 2;
+                data = newData;
             }
+            data[count] = itemToAdd;
+            count++;
+        }
+        public bool Remove(T itemToRemove)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                bool equivalencyTest = CustomList<T>.Equals(data[i], itemToRemove);
+                Console.WriteLine(equivalencyTest);
+                Console.ReadLine();
+
+            }
+            return false;
         }
     }
 }
