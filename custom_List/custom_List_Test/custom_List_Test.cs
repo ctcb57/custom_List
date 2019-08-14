@@ -121,114 +121,133 @@ namespace custom_List_Test
         {
             //arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 2;
+            int expected = 6;
             int actual;
             //act
             testList.Add(2);
             testList.Add(4);
+            testList.Add(6);
             testList.Remove(4);
-            actual = testList[0];
+            actual = testList[1];
             //assert
             Assert.AreEqual(expected, actual);
         }
-        //    [TestMethod]
-        //    public void Remove_RemoveMultipleItems_ListBecomesTwoEntries()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 2;
-        //        int actual;
+        [TestMethod]
+        public void Remove_RemoveMultipleItems_ListBecomesTwoEntries()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 2;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Add(2);
-        //        testList.Add(3);
-        //        testList.Add(4);
-        //        testList.Remove(3);
-        //        testList.Remove(1);
-        //        actual = testList.Count;
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(3);
+            testList.Remove(1);
+            actual = testList.Count;
 
-        //        Assert.AreEqual(expected, actual);
-        //    }
-        //    [TestMethod]
-        //    public void Remove_RemoveSingleItem_ListBecomesEmpty()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 0;
-        //        int actual;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveSingleItem_ListBecomesEmpty()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 0;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Remove(1);
-        //        actual = testList.Count;
+            testList.Add(1);
+            testList.Remove(1);
+            actual = testList.Count;
 
-        //        Assert.AreEqual(expected, actual);
-        //    }
-        //    [TestMethod]
-        //    public void Remove_RemoveBelowExpectedCapacity_ListShrinksBelowOriginalCapacity()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 8;
-        //        int actual;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveBelowExpectedCapacity_ListShrinksBelowOriginalCapacity()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 8;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Add(2);
-        //        testList.Add(3);
-        //        testList.Add(4);
-        //        testList.Add(5);
-        //        testList.Remove(5);
-        //        actual = testList.Capacity;
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Add(5);
+            testList.Remove(5);
+            actual = testList.Capacity;
 
-        //        Assert.AreEqual(expected, actual);
-        //    }
+            Assert.AreEqual(expected, actual);
+        }
 
-        //    [TestMethod]
-        //    public void Remove_DecreaseIndexLocationByOne_IndexLocationDecreasesOne()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 4;
-        //        int actual;
+        [TestMethod]
+        public void Remove_DecreaseIndexLocationByOne_IndexLocationDecreasesOne()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Add(2);
-        //        testList.Add(3);
-        //        testList.Add(4);
-        //        testList.Remove(3);
-        //        actual = testList[2];
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(3);
+            actual = testList.Count;
 
-        //        Assert.AreEqual(expected, actual);
-        //    }
+            Assert.AreEqual(expected, actual);
+        }
 
-        //    [TestMethod]
-        //    public void Remove_RemoveInvalidItem_ArrayDoesNotChange()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 3;
-        //        int actual;
+        [TestMethod]
+        public void Remove_RemoveInvalidItem_ArrayDoesNotChange()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Add(2);
-        //        testList.Add(3);
-        //        testList.Remove(44);
-        //        actual = testList.Count;
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Remove(44);
+            actual = testList.Count;
 
-        //        Assert.AreEqual(expected, actual);
-        //    }
+            Assert.AreEqual(expected, actual);
+        }
 
-        //    [TestMethod]
-        //    public void Remove_RemoveWhenDuplicateItemPresent_RemovesFirstInstance()
-        //    {
-        //        CustomList<int> testList = new CustomList<int>();
-        //        int expected = 4;
-        //        int actual;
+        [TestMethod]
+        public void Remove_RemoveWhenDuplicateItemPresent_RemovesFirstInstance()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+            int actual;
 
-        //        testList.Add(1);
-        //        testList.Add(2);
-        //        testList.Add(3);
-        //        testList.Add(3);
-        //        testList.Add(4);
-        //        testList.Remove(3);
-        //        actual = testList.Count;
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(3);
+            actual = testList[2];
 
-        //        Assert.AreEqual(expected, actual);
-    //}
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_RemoveWhenDuplicateItemPresent_RemovesOnlyFirstInstance()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 4;
+            int actual;
+
+            testList.Add(3);
+            testList.Add(3);
+            testList.Add(3);
+            testList.Add(3);
+            testList.Add(3);
+            testList.Remove(3);
+            actual = testList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 
 }

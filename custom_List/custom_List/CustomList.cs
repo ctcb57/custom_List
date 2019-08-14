@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 namespace custom_List
 {
     //Steps for the project:
-    //Make capacity a property
-    //Need to start with the test method creation for the remove method
-    //after approval, start to develop the method for the remove method
-    //before this, generate the steps necessary to create this method
+
 
     public class CustomList<T>
     {
@@ -93,16 +90,27 @@ namespace custom_List
             data[count] = itemToAdd;
             count++;
         }
-        public bool Remove(T itemToRemove)
+        public void Remove(T itemToRemove)
         {
             for (int i = 0; i < count; i++)
             {
                 bool equivalencyTest = CustomList<T>.Equals(data[i], itemToRemove);
-                Console.WriteLine(equivalencyTest);
-                Console.ReadLine();
-
+                if (equivalencyTest)
+                {
+                    for (int j = i; j < count; j++)
+                    {
+                        if (j == count - 1)
+                        {
+                            data[j] = default(T);
+                            break;
+                        }
+                        data[j] = data[j + 1];
+                    }
+                    count--;
+                    break;
+                }
             }
-            return false;
         }
     }
 }
+
