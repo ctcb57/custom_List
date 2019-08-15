@@ -292,69 +292,89 @@ namespace custom_List_Test
 
         }
         //Unit Tests for adding two lists together
-        //[TestMethod]
-        //public void CombineTwoLists_PutTwoSameSizeListsTogether_TwoListsCombine()
-        //{
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    CustomList<int> resultList = new CustomList<int>();
-        //    int expected = 6;
-        //    int actual;
+        [TestMethod]
+        public void CombineTwoLists_PutTwoSameSizeListsTogether_TwoListsCombine()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 6;
+            int actual;
 
-        //    list1.Add(1);
-        //    list1.Add(2);
-        //    list1.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list2.Add(6);
-        //    resultList = list1 + list2;
-        //    actual = resultList.Count;
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            resultList = list1 + list2;
+            actual = resultList.Count;
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void CombineTwoLists_PutTwoDifferentSizeListsTogether_TwoListsCombine()
-        //{
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    CustomList<int> resultList = new CustomList<int>();
-        //    int expected = 8;
-        //    int actual;
+        [TestMethod]
+        public void CombineTwoLists_PutTwoDifferentSizeListsTogether_TwoListsCombine()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 8;
+            int actual;
 
-        //    list1.Add(1);
-        //    list1.Add(2);
-        //    list1.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list2.Add(6);
-        //    list2.Add(7);
-        //    list2.Add(8);
-        //    resultList = list1 + list2;
-        //    actual = resultList.Count;
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            list2.Add(7);
+            list2.Add(8);
+            resultList = list1 + list2;
+            actual = resultList.Count;
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void CombineTwoLists_PutEmptyListWithFullList_TwoListsCombine()
-        //{
-        //    CustomList<int> list1 = new CustomList<int>() { 1, 2, 3, 4 };
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    CustomList<int> resultList = new CustomList<int>();
-        //    int expected = 4;
-        //    int actual;
+        [TestMethod]
+        public void CombineTwoLists_PutEmptyListWithFullList_TwoListsCombine()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 4;
+            int actual;
 
-        //    list2.Add(1);
-        //    list2.Add(2);
-        //    list2.Add(3);
-        //    list2.Add(4);
-        //    resultList = list1 + list2;
-        //    actual = resultList.Count;
+            list2.Add(1);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            resultList = list1 + list2;
+            actual = resultList.Count;
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
+        [TestMethod]
+        public void CombineTwoLists_PutTwoListsTogether_NewListItemGoesToCorrectIndexLocation()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 5;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            resultList = list1 + list2;
+            actual = resultList[4];
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 
     
