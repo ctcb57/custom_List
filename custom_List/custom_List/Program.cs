@@ -10,7 +10,7 @@ namespace custom_List
     {
         static void Main(string[] args)
         {
-            
+
         }
 
 

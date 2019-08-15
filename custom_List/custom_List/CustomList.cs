@@ -147,11 +147,42 @@ namespace custom_List
             }
             return list1;
         }
-
-        public void Zip(CustomList<T> list1, CustomList<T> list2)
+        //Things to do for this method
+        //Need to take the 0 index of list1 and put in index 0 of new list
+        //0 index of list2 goes to index 1 of new list
+        //alternates each time
+        public static CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
-
+            CustomList<T> resultList = new CustomList<T>();
+            if (list1.Count >= list2.Count)
+            {
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    resultList.Add(list1[i]);
+                    for (int j = i; j < list2.Count; j++)
+                    {
+                        resultList.Add(list2[j]);
+                        break;
+                    }
+                }
+                return resultList;
+            }
+            else
+            {
+                for (int i = 0; i < list2.Count; i++)
+                {
+                    resultList.Add(list2[i]);
+                    for (int j = i; j < list1.Count; j++)
+                    {
+                        resultList.Add(list1[j]);
+                        break;
+                    }
+                }
+                return resultList;
+            }
         }
+        //Clean this up to where you calculate the difference and go upon that point
+       
     }
 }
 
