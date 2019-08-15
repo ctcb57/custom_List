@@ -459,6 +459,86 @@ namespace custom_List_Test
 
             Assert.AreEqual(expected, actual);
         }
+        //Zip method unit tests
+
+        [TestMethod]
+
+        public void Zip_ZipTwoSameSizeListsTogether_ListsAreZippedTogether()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 6;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            actual = resultList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Zip_ZipTwoDifferentSizedListsTogether_ListsAreZippedTogether()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 7;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list1.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            list2.Add(7);
+            actual = resultList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Zip_ZipEmptyListWithOtherList_OtherListStaysIntact()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 3;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            actual = resultList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        public void Zip_ZipTwoListsTogether_ItemsGoToCorrectIndexLocation()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            actual = resultList[2];
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 
     

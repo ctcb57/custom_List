@@ -147,6 +147,11 @@ namespace custom_List
             }
             return list1;
         }
+
+        public void Zip(CustomList<T> list1, CustomList<T> list2)
+        {
+
+        }
     }
 }
 
