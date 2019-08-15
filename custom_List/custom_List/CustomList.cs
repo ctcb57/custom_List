@@ -121,10 +121,14 @@ namespace custom_List
             }
             return stringHolder;
         }
-
-        public void CombineTwoLists()
+        
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
         {
-
+            for(int i = 0; i < list2.count; i++)
+            {
+                list1.Add(list2[i]);
+            }
+            return list1;
         }
     }
 }
