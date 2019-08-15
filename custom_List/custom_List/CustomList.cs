@@ -111,6 +111,21 @@ namespace custom_List
                 }
             }
         }
+
+        public override string ToString()
+        {
+            string stringHolder = "";
+            for (int i = 0; i < count; i++)
+            {
+                stringHolder += data[i].ToString();
+            }
+            return stringHolder;
+        }
+
+        public void CombineTwoLists()
+        {
+
+        }
     }
 }
 
