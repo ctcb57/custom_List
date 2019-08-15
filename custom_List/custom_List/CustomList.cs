@@ -130,6 +130,23 @@ namespace custom_List
             }
             return list1;
         }
+
+        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        {
+            for(int i = 0; i < list1.count; i++)
+            {
+                for(int j = 0; j < list2.count; j++)
+                {
+                    if(CustomList<T>.Equals(list1[i], list2[j]))
+                    {
+                        list1.Remove(list2[j]);
+                        
+                    }
+                    break;
+                }
+            }
+            return list1;
+        }
     }
 }
 
