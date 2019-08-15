@@ -377,6 +377,68 @@ namespace custom_List_Test
         }
 
         //Unit Tests for Subtract Overload
+        [TestMethod]
+        public void SubtractFromList_RemoveSingleInstance_NewListHasItemRemoved()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(2);
+            list2.Add(4);
+            list2.Add(5);
+            resultList = list1 - list2;
+            actual = list1.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SubtractFromList_RemoveMultipleInstance_NewListHasItemsRemoved()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 1;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(5);
+            resultList = list1 - list2;
+            actual = list1.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SubtractFromList_NoDuplicateInstancesPresent_NoChangeToLists()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 3;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            resultList = list1 - list2;
+            actual = list1.Count;
+
+            Assert.AreEqual(expected, actual)
+        }
     }
 
     
