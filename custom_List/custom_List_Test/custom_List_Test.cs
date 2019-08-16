@@ -1,6 +1,5 @@
-﻿using System;
+﻿using custom_List;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using custom_List;
 
 namespace custom_List_Test
 {
@@ -11,104 +10,70 @@ namespace custom_List_Test
         [TestMethod]
         public void Add_AddToEmptyList_ItemGoesToIndexZero()
         {
-            // arrange
             CustomList<int> testList = new CustomList<int>();
             int expected = 1;
             int actual;
 
-            // act
             testList.Add(1);
             actual = testList[0];
 
-            // assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Add_AddToListWithExistingItem_NewItemGoesToEndOfList()
         {
-            // arrange
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2 };
             int expected = 2;
             int actual;
 
-            // act
-            testList.Add(1);
-            testList.Add(2);
             actual = testList[1];
 
-            // assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Add_AddToEmptyList_CountGoesToOne()
         {
-            // arrange
             CustomList<int> testList = new CustomList<int>();
             int expected = 1;
             int actual;
 
-            // act
             testList.Add(198765);
             actual = testList.Count;
 
-            // assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void Add_AddToFullList_AddsToEndOfList()
         {
-            //arrange
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4, 5 };
             int expected = 5;
             int actual;
 
-            //act
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
             actual = testList[4];
 
-            //assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void Add_AddToFullListSecondIteration_AddsToEndOfList()
         {
-            //arrange
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             int expected = 9;
             int actual;
-            //act
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
-            testList.Add(6);
-            testList.Add(7);
-            testList.Add(8);
-            testList.Add(9);
+
             actual = testList[8];
-            //assert
+
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Add_AddBeyondInitialCapacity_OriginalArrayValuesPopulateInNewArray()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4, 5 };
             int expected = 3;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
             actual = testList[2];
 
             Assert.AreEqual(expected, actual);
@@ -119,30 +84,22 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_RemoveSingleItem_ListBecomesSingleEntry()
         {
-            //arrange
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 2, 4, 6 };
             int expected = 6;
             int actual;
-            //act
-            testList.Add(2);
-            testList.Add(4);
-            testList.Add(6);
+
             testList.Remove(4);
             actual = testList[1];
-            //assert
+
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void Remove_RemoveMultipleItems_ListBecomesTwoEntries()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4 };
             int expected = 2;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
             testList.Remove(3);
             testList.Remove(1);
             actual = testList.Count;
@@ -165,15 +122,10 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_RemoveBelowExpectedCapacity_ListShrinksBelowOriginalCapacity()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>(){1, 2, 3, 4, 5};
             int expected = 8;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
             testList.Remove(5);
             actual = testList.Capacity;
 
@@ -183,14 +135,10 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_DecreaseIndexLocationByOne_IndexLocationDecreasesOne()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 4 };
             int expected = 3;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
             testList.Remove(3);
             actual = testList.Count;
 
@@ -200,13 +148,10 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_RemoveInvalidItem_ArrayDoesNotChange()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3 };
             int expected = 3;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
             testList.Remove(44);
             actual = testList.Count;
 
@@ -216,15 +161,10 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_RemoveWhenDuplicateItemPresent_RemovesFirstInstance()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3, 3, 4 };
             int expected = 3;
             int actual;
 
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(3);
-            testList.Add(4);
             testList.Remove(3);
             actual = testList[2];
 
@@ -234,15 +174,11 @@ namespace custom_List_Test
         [TestMethod]
         public void Remove_RemoveWhenDuplicateItemPresent_RemovesOnlyFirstInstance()
         {
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList = new CustomList<int>() { 3, 3, 3, 3, 3 };
             int expected = 4;
             int actual;
 
-            testList.Add(3);
-            testList.Add(3);
-            testList.Add(3);
-            testList.Add(3);
-            testList.Add(3);
+
             testList.Remove(3);
             actual = testList.Count;
 
@@ -254,12 +190,10 @@ namespace custom_List_Test
         [TestMethod]
         public void PrintString_PrintStringIfListIsInt_StringsPrint()
         {
-            CustomList<int> testList = new CustomList<int>();
-            string expected = "12";
+            CustomList<int> testList = new CustomList<int>() { 1, 2 };
+            string expected = "1, 2";
             string actual;
 
-            testList.Add(1);
-            testList.Add(2);
             actual = testList.ToString();
 
             Assert.AreEqual(expected, actual);
@@ -295,18 +229,12 @@ namespace custom_List_Test
         [TestMethod]
         public void CombineTwoLists_PutTwoSameSizeListsTogether_TwoListsCombine()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 6;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
             resultList = list1 + list2;
             actual = resultList.Count;
 
@@ -316,20 +244,12 @@ namespace custom_List_Test
         [TestMethod]
         public void CombineTwoLists_PutTwoDifferentSizeListsTogether_TwoListsCombine()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6, 7, 8 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 8;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
-            list2.Add(7);
-            list2.Add(8);
             resultList = list1 + list2;
             actual = resultList.Count;
 
@@ -340,15 +260,11 @@ namespace custom_List_Test
         public void CombineTwoLists_PutEmptyListWithFullList_TwoListsCombine()
         {
             CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>() { 1, 2, 3, 4 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 4;
             int actual;
 
-            list2.Add(1);
-            list2.Add(2);
-            list2.Add(3);
-            list2.Add(4);
             resultList = list1 + list2;
             actual = resultList.Count;
 
@@ -358,18 +274,12 @@ namespace custom_List_Test
         [TestMethod]
         public void CombineTwoLists_PutTwoListsTogether_NewListItemGoesToCorrectIndexLocation()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 5;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
             resultList = list1 + list2;
             actual = resultList[4];
 
@@ -380,18 +290,12 @@ namespace custom_List_Test
         [TestMethod]
         public void SubtractFromList_RemoveSingleInstance_NewListHasItemRemoved()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 2, 4, 5 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 2;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(2);
-            list2.Add(4);
-            list2.Add(5);
             resultList = list1 - list2;
             actual = list1.Count;
 
@@ -401,18 +305,12 @@ namespace custom_List_Test
         [TestMethod]
         public void SubtractFromList_NoDuplicateInstancesPresent_NoChangeToLists()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 3;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
             resultList = list1 - list2;
             actual = list1.Count;
 
@@ -421,18 +319,12 @@ namespace custom_List_Test
         [TestMethod]
         public void SubtractFromList_SubtractOneItem_ListAfterRemovalChangesIndexLocation()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 2, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 3;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(2);
-            list2.Add(5);
-            list2.Add(6);
             resultList = list1 - list2;
             actual = list1[1];
 
@@ -442,18 +334,12 @@ namespace custom_List_Test
         [TestMethod]
         public void SubtractFromList_SubtractOneItemWhenMultipleMatchesPresent_NewListHasItemRemoved()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 2, 3, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 3;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(2);
-            list2.Add(3);
-            list2.Add(6);
             resultList = list1 - list2;
             actual = list1[1];
 
@@ -462,18 +348,12 @@ namespace custom_List_Test
         [TestMethod]
         public void SubtractFromList_MultipleInstancesSecondList_RemovesAllInstancesInFirstList()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 2, 3, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 2;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(2);
-            list2.Add(3);
-            list2.Add(6);
             resultList = list1 - list2;
             actual = list1.Count;
 
@@ -485,18 +365,12 @@ namespace custom_List_Test
 
         public void Zip_ZipTwoSameSizeListsTogether_ListsAreZippedTogether()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 6;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList.Count;
 
@@ -506,19 +380,12 @@ namespace custom_List_Test
         [TestMethod]
         public void Zip_ZipTwoDifferentSizedListsTogether_ListsAreZippedTogether()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3, 4 };
+            CustomList<int> list2 = new CustomList<int>() { 5, 6, 7 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 7;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list1.Add(4);
-            list2.Add(5);
-            list2.Add(6);
-            list2.Add(7);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList.Count;
 
@@ -528,15 +395,12 @@ namespace custom_List_Test
         [TestMethod]
         public void Zip_ZipEmptyListWithOtherList_OtherListStaysIntact()
         {
-            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> list2 = new CustomList<int>();
             CustomList<int> resultList = new CustomList<int>();
             int expected = 3;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList.Count;
 
@@ -545,18 +409,12 @@ namespace custom_List_Test
         [TestMethod]
         public void Zip_ZipTwoListsTogether_ItemsGoToCorrectIndexLocation()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 2;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList[2];
 
@@ -565,19 +423,12 @@ namespace custom_List_Test
         [TestMethod]
         public void Zip_ZipTwoDifferentSizedListsTogetherSecondLarger_ListsAreZippedTogether()
         {
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> list2 = new CustomList<int>() { 4, 5, 6, 7 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 7;
             int actual;
 
-            list1.Add(1);
-            list1.Add(2);
-            list1.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
-            list2.Add(7);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList.Count;
 
@@ -587,14 +438,11 @@ namespace custom_List_Test
         public void Zip_FirstListEmpty_OtherListStaysIntact()
         {
             CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> resultList = new CustomList<int>();
             int expected = 3;
             int actual;
 
-            list2.Add(1);
-            list2.Add(2);
-            list2.Add(3);
             resultList = CustomList<int>.Zip(list1, list2);
             actual = resultList.Count;
 
@@ -618,47 +466,10 @@ namespace custom_List_Test
 
             Assert.AreEqual(expected, actual);
         }
-        //Sort Unit Tests
-        [TestMethod]
-        public void SortIntAscendingOrder_ListOfRandomNumbers_SortInAscendingOrder()
-        {
-            CustomList<int> testList = new CustomList<int>() { 5, 2, 4, 7, 6, 9, 3, 1, 8 };
-            string expected = "123456789";
-            string actual;
-
-            testList = CustomList<int>.SortIntAscendingOrder();
-            actual = testList.ToString();
-
-            Assert.AreEqual(expected, actual);
-
-        }
-        [TestMethod]
-        public void SortIntAscendingOrder_ListOfNumbersWithDuplicates_SortInAscendingOrder()
-        {
-            CustomList<int> testList = new CustomList<int>() { 5, 2, 4, 2, 6, 9, 6, 1, 8 };
-            string expected = "122456689";
-            string actual;
-
-            testList = CustomList<int>.SortIntAscendingOrder();
-            actual = testList.ToString();
-
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod] 
-        public void SortIntAscendingOrder_ListOfNumbersWithNegatives_SortInAscendingOrder()
-        {
-            CustomList<int> testList = new CustomList<int>() { -1, 9, 3, 4, 8, -2, -7, 0};
-            string expected = "-7-2-103489";
-            string actual;
-
-            testList = CustomList<int>.SortIntAscendingOrder();
-            actual = testList.ToString();
-
-            Assert.AreEqual(expected, actual);
-        }
-
-
+        
     }
+    
+    
 
     
 

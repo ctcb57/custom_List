@@ -101,7 +101,7 @@ namespace custom_List
             data[count] = itemToAdd;
             count++;
         }
-        //try to work it so there is a single for loop
+
         public void Remove(T itemToRemove)
         {
             for (int i = 0; i < count; i++)
@@ -124,13 +124,19 @@ namespace custom_List
             }
         }
 
-        //Need to modify this method in order to allow for commas between the string items
         public override string ToString()
         {
             string stringHolder = "";
             for (int i = 0; i < count; i++)
             {
-                stringHolder += data[i].ToString();
+                if (i == count - 1)
+                {
+                    stringHolder += data[i].ToString();
+                }
+                else
+                {
+                    stringHolder += data[i].ToString() + ", ";
+                }
             }
             return stringHolder;
         }
@@ -143,14 +149,14 @@ namespace custom_List
             }
             return list1;
         }
-        //try to work this so it is a single for loop
+        
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
-            for(int i = 0; i < list1.count; i++)
+            for (int i = 0; i < list1.count; i++)
             {
-                for(int j = 0; j < list2.count; j++)
+                for (int j = 0; j < list2.count; j++)
                 {
-                    if(CustomList<T>.Equals(list1[i], list2[j]))
+                    if (Equals(list1[i], list2[j]))
                     {
                         list1.Remove(list2[j]);
                         break;
@@ -159,7 +165,7 @@ namespace custom_List
             }
             return list1;
         }
-        //try to work this method so it has a single for loop or it is a simpler logic movement
+
         public static CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> resultList = new CustomList<T>();
@@ -191,12 +197,7 @@ namespace custom_List
             }
         }
 
-        public static CustomList<int> SortIntAscendingOrder()
-        {
 
-        }
-
-       
     }
 }
 
