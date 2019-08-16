@@ -16,6 +16,8 @@ The first list is returned.
 
 Example:
 
+CustomList<int> list1 = new CustomList<int>();
+CustomList<int> list2 = new CustomList<int>();
 list1 = {1, 2, 3};
 list2 = {2, 4, 6};
 newList = list1 - list 2;

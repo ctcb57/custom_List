@@ -101,6 +101,7 @@ namespace custom_List
             data[count] = itemToAdd;
             count++;
         }
+        //try to work it so there is a single for loop
         public void Remove(T itemToRemove)
         {
             for (int i = 0; i < count; i++)
@@ -123,6 +124,7 @@ namespace custom_List
             }
         }
 
+        //Need to modify this method in order to allow for commas between the string items
         public override string ToString()
         {
             string stringHolder = "";
@@ -141,7 +143,7 @@ namespace custom_List
             }
             return list1;
         }
-
+        //try to work this so it is a single for loop
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
             for(int i = 0; i < list1.count; i++)
@@ -157,7 +159,7 @@ namespace custom_List
             }
             return list1;
         }
-
+        //try to work this method so it has a single for loop or it is a simpler logic movement
         public static CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> resultList = new CustomList<T>();
@@ -187,6 +189,11 @@ namespace custom_List
                 }
                 return resultList;
             }
+        }
+
+        public void Sort()
+        {
+
         }
 
        

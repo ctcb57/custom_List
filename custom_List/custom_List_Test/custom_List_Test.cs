@@ -609,7 +609,7 @@ namespace custom_List_Test
             int actual;
             int i = 0;
 
-            foreach(int value in testList)
+            foreach (int value in testList)
             {
                 testList[i] = value + 1;
                 i++;
@@ -618,7 +618,44 @@ namespace custom_List_Test
 
             Assert.AreEqual(expected, actual);
         }
-        
+        //Sort Unit Tests
+        [TestMethod]
+        public void SortIntAscendingOrder_ListOfRandomNumbers_SortInAscendingOrder()
+        {
+            CustomList<int> testList = new CustomList<int>() { 5, 2, 4, 7, 6, 9, 3, 1, 8 };
+            string expected = "123456789";
+            string actual;
+
+            testList = CustomList<int>.SortIntAscendingOrder();
+            actual = testList.ToString();
+
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+        public void SortIntAscendingOrder_ListOfNumbersWithDuplicates_SortInAscendingOrder()
+        {
+            CustomList<int> testList = new CustomList<int>() { 5, 2, 4, 2, 6, 9, 6, 1, 8 };
+            string expected = "122456689";
+            string actual;
+
+            testList = CustomList<int>.SortIntAscendingOrder();
+            actual = testList.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod] 
+        public void SortIntAscendingOrder_ListOfNumbersWithNegatives_SortInAscendingOrder()
+        {
+            CustomList<int> testList = new CustomList<int>() { -1, 9, 3, 4, 8, -2, -7, 0};
+            string expected = "-7-2-103489";
+            string actual;
+
+            testList = CustomList<int>.SortIntAscendingOrder();
+            actual = testList.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }
