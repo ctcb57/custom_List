@@ -191,7 +191,7 @@ namespace custom_List
             }
         }
 
-        public void Sort()
+        public static CustomList<int> SortIntAscendingOrder()
         {
 
         }
