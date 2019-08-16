@@ -459,6 +459,26 @@ namespace custom_List_Test
 
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void SubtractFromList_MultipleInstancesSecondList_RemovesAllInstancesInFirstList()
+        {
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> resultList = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(6);
+            resultList = list1 - list2;
+            actual = list1.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
         //Zip method unit tests
 
         [TestMethod]
@@ -580,6 +600,25 @@ namespace custom_List_Test
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Iterator_AddOneToEachInt_IntsIncreaseByOne()
+        {
+            CustomList<int> testList = new CustomList<int>() { 1, 2, 3 };
+            int expected = 3;
+            int actual;
+            int i = 0;
+
+            foreach(int value in testList)
+            {
+                testList[i] = value + 1;
+                i++;
+            }
+            actual = testList[1];
+
+            Assert.AreEqual(expected, actual);
+        }
+        
 
 
     }

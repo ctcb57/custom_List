@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace custom_List
 {
-    //Steps for the project:
 
-
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable<T>
     {
         //member variables
         public T[] data;
@@ -48,7 +47,7 @@ namespace custom_List
                 }
             }
         }
-        //throw the outofrange exceptions within the indexer
+
         public int Count
         {
             get
@@ -74,6 +73,18 @@ namespace custom_List
         }
         //member methods
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            for(int i = 0; i < Count; i++)
+            {
+                yield return data[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         public void Add(T itemToAdd)
         {
@@ -140,17 +151,13 @@ namespace custom_List
                     if(CustomList<T>.Equals(list1[i], list2[j]))
                     {
                         list1.Remove(list2[j]);
-                        
+                        break;
                     }
-                    break;
                 }
             }
             return list1;
         }
-        //Things to do for this method
-        //Need to take the 0 index of list1 and put in index 0 of new list
-        //0 index of list2 goes to index 1 of new list
-        //alternates each time
+
         public static CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> resultList = new CustomList<T>();
@@ -181,7 +188,7 @@ namespace custom_List
                 return resultList;
             }
         }
-        //Clean this up to where you calculate the difference and go upon that point
+
        
     }
 }
