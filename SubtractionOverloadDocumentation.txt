@@ -1,0 +1,22 @@
+- Operator Overload
+
+
+Synatax: 
+public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+
+Parameters:
+CustomList<T> list1, CustomList<T> list2
+The first list is compared to the second list.
+
+Returns: 
+list1
+The values of the first list are compared to the values in the second list.
+The first value of the first list which is equivalent to a value in the second list is removed from the first list.
+The first list is returned.
+
+Example:
+
+list1 = {1, 2, 3};
+list2 = {2, 4, 6};
+newList = list1 - list 2;
+newList = {1, 3}
