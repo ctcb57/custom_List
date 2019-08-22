@@ -146,14 +146,6 @@ namespace custom_List
             return stringHolder;
         }
         
-        //public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
-        //{
-        //    for(int i = 0; i < list2.count; i++)
-        //    {
-        //        list1.Add(list2[i]);
-        //    }
-        //    return list1;
-        //}
 
         public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
         {
@@ -169,36 +161,21 @@ namespace custom_List
             return resultList;
         }
         
-        //public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
-        //{
-        //    for (int i = 0; i < list1.count; i++)
-        //    {
-        //        for (int j = 0; j < list2.count; j++)
-        //        {
-        //            if (Equals(list1[i], list2[j]))
-        //            {
-        //                list1.Remove(list2[j]);
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return list1;
-        //}
 
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> resultList = new CustomList<T>();
-            for (int j = 0; j < list1.count; j++)
+            for (int i = 0; i < list1.count; i++)
             {
-                for (int i = 0; i < list2.count; i++)
+                for (int j = 0; j < list2.count; j++)
                 {
-                    if (Equals(list1[j], list2[i]))
+                    if (Equals(list1[i], list2[j]))
                     {
                         break;
                     }
-                    else if (i == list2.count - 1)
+                    else if (j == list2.count - 1)
                     {
-                        resultList.Add(list1[j]);
+                        resultList.Add(list1[i]);
                     }
                 }
             }
