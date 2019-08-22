@@ -49,8 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="custom_List_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Add_Unit_Tests.cs" />
+    <Compile Include="Remove_Unit_Tests.cs" />
+    <Compile Include="PrintString_Unit_Tests.cs" />
+    <Compile Include="Combine_Unit_Tests.cs" />
+    <Compile Include="Subtract_Unit_Tests.cs" />
+    <Compile Include="Iterator_Unit_Test.cs" />
+    <Compile Include="Zip_Unit_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
